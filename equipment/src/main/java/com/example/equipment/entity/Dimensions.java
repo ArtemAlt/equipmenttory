@@ -1,5 +1,6 @@
 package com.example.equipment.entity;
 
+import com.example.equipment.enums.EquipmentSize;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,9 +20,10 @@ public class Dimensions {
     @GeneratedValue
     @Column(name = "id")
     private UUID id;
-    @OneToOne
+
     @Column(name="size")
-    private UnitTypeSize size;
+    @Enumerated(EnumType.STRING)
+    private EquipmentSize size;
 
     /**
      * Физические характеристики оборудования

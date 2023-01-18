@@ -1,9 +1,11 @@
 package com.example.equipment.services.impl;
 
 
+import com.example.equipment.dto.create.EquipmentCreateByNameDto;
 import com.example.equipment.dto.info.EquipmentInfoDTO;
 import com.example.equipment.entity.Equipment;
 import com.example.equipment.repository.EquipmentRepository;
+import com.example.equipment.services.interfaces.EquipmentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,25 +17,35 @@ import java.util.UUID;
  */
 @Service
 @RequiredArgsConstructor
-public class EquipmentServiceImpl {
+public class EquipmentServiceImpl implements EquipmentService {
     private final EquipmentRepository repository;
 
 
-    Equipment getById(UUID id){
+    public Equipment getById(UUID id){
+        // TODO: 18.01.2023 реализовать
         return null;
     };
 
-    EquipmentInfoDTO get(UUID id){
+    public EquipmentInfoDTO get(UUID id){
+        // TODO: 18.01.2023 реализовать
         return null;
     };
 
 
-    List<EquipmentInfoDTO> getAll(){
+    public List<EquipmentInfoDTO> getAll(){
+        // TODO: 18.01.2023 реализовать
         return null;
     };
 //    UUID createNew(EquipmentCreateDto dto);
 
-    void save(Equipment e){
+    public void save(Equipment e){
+        // TODO: 18.01.2023 реализовать
+    }
 
-    };
+    @Override
+    public UUID createNew(EquipmentCreateByNameDto dto) {
+        return null;
+    }
+
+    ;
 }

@@ -14,7 +14,7 @@ import java.util.UUID;
 @Setter
 @Getter
 @Entity
-@Table(name = "models")
+@Table(name = "manufacturers")
 public class Manufacturer {
     @Id
     @GeneratedValue

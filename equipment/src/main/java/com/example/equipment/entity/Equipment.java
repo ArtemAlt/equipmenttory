@@ -27,7 +27,7 @@ public class Equipment {
     @NonNull
     private String name;
     @OneToOne
-    @JoinColumn(name = "type_id")
+    @JoinColumn(name = "model_id")
     private Model model;
 
     @OneToOne

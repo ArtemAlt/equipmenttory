@@ -15,7 +15,7 @@ import java.util.UUID;
 @Getter
 @Entity
 @Table(name = "features")
-public class Feature {
+public class  Feature {
     @Id
     @GeneratedValue
     @Column(name = "id")
