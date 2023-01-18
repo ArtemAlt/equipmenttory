@@ -4,10 +4,7 @@ package com.example.equipment.entity;
 import com.example.equipment.enums.EquipmentSize;
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.NonNull;
 import lombok.Setter;
-
-import java.util.UUID;
 
 /**
  * Базовая единица определяющая размер оборудования в units
@@ -21,7 +18,7 @@ public class UnitTypeSize {
     @Id
     @GeneratedValue
     @Column(name = "id")
-    private UUID id;
+    private Long id;
     /**
      * Размер в units
      */
