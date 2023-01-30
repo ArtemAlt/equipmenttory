@@ -2,7 +2,7 @@ package com.example.equipment.services.interfaces;
 
 
 import com.example.equipment.dto.create.EquipmentCreateByNameDto;
-import com.example.equipment.dto.info.EquipmentInfoDTO;
+import com.example.equipment.dto.info.EquipmentInfoDto;
 import com.example.equipment.entity.Equipment;
 
 import java.util.List;
@@ -22,13 +22,14 @@ public interface EquipmentService {
      * Вернуть информацию по идентификатору
      * @return представление
      */
-    EquipmentInfoDTO get(UUID id);
+    EquipmentInfoDto get(UUID id);
 
     /**
      * вернуть информацию по всеу списку оборудования в системе
+     *
      * @return представление
      */
-    List<EquipmentInfoDTO> getAll();
+    List<Equipment> getAll();
 
 //    UUID createNew(EquipmentCreateDto dto);
 

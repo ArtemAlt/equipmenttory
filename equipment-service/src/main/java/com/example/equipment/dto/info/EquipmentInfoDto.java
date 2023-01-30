@@ -8,25 +8,23 @@ import java.util.Set;
 import java.util.UUID;
 @Getter
 @Setter
-public class EquipmentInfoDTO {
-    private UUID id;
+public class EquipmentInfoDto {
 
-    private String name;
+    private UUID id;
     /**
      * Наименование оборудования
      */
+
+    private String name;
+
     private ModelInfoDto model;
-    /**
-     * Производитель оборудования
-     */
+
     private ManufacturerInfoDto manufacturer;
 
+    private DimensionsInfoDto dimensions;
     /**
-     * Габариты
+     * Сетевые характеристики оборудования
      */
-    private DimensionsInfoDTO dimensions;
-
     private Set<FeatureInfoDto> featureSet;
-
 
 }

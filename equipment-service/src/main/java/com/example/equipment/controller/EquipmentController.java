@@ -2,7 +2,8 @@ package com.example.equipment.controller;
 
 
 import com.example.equipment.dto.create.EquipmentCreateByNameDto;
-import com.example.equipment.dto.info.EquipmentInfoDTO;
+import com.example.equipment.dto.info.EquipmentInfoDto;
+import com.example.equipment.mappers.info.EquipmentMapper;
 import com.example.equipment.services.interfaces.EquipmentService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -22,6 +23,7 @@ import java.util.UUID;
 @RestController
 public class EquipmentController {
     private final EquipmentService service;
+    private final EquipmentMapper mapper;
 
     @PostMapping("/new")
     @Operation(summary = "Создание нового оборудования без привязки к стойке", description = "Создание нового оборудования без привязки к стойке")
@@ -34,16 +36,16 @@ public class EquipmentController {
     @GetMapping("/all")
     @Operation(summary = "Список всего оборудования в системе", description = "Список всего оборудования в системе")
     @ApiResponse(responseCode = "200", description = "Возвращает список всего оборудования в системе")
-    public ResponseEntity<List<EquipmentInfoDTO>> getAll() {
-        return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
+    public ResponseEntity<List<EquipmentInfoDto>> getAll() {
+        return new ResponseEntity<>(mapper.toDto(service.getAll()), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
     @Operation(summary = "Информация по оборудованию", description = "Информация по оборудованию")
     @ApiResponse(responseCode = "200", description = "Возвращает информацию по оборудованию")
-    public ResponseEntity<EquipmentInfoDTO> get(@Parameter(description = "UUID оборудования")
+    public ResponseEntity<EquipmentInfoDto> get(@Parameter(description = "UUID оборудования")
                                                @PathVariable(value = "id") UUID id) {
-        return new ResponseEntity<>(service.get(id), HttpStatus.OK);
+        return new ResponseEntity<>(mapper.toDto(service.getById(id)), HttpStatus.OK);
     }
 
 //    @PostMapping("/add-new")

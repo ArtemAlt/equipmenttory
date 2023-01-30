@@ -2,8 +2,9 @@ package com.example.equipment.services.impl;
 
 
 import com.example.equipment.dto.create.EquipmentCreateByNameDto;
-import com.example.equipment.dto.info.EquipmentInfoDTO;
+import com.example.equipment.dto.info.EquipmentInfoDto;
 import com.example.equipment.entity.Equipment;
+import com.example.equipment.errors.ResourceNotFoundException;
 import com.example.equipment.repository.EquipmentRepository;
 import com.example.equipment.services.interfaces.EquipmentService;
 import lombok.RequiredArgsConstructor;
@@ -22,20 +23,21 @@ public class EquipmentServiceImpl implements EquipmentService {
 
 
     public Equipment getById(UUID id){
+       return repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Could not find equipment by id - " + id));
+    }
+
+    public EquipmentInfoDto get(UUID id){
         // TODO: 18.01.2023 реализовать
         return null;
     };
 
-    public EquipmentInfoDTO get(UUID id){
-        // TODO: 18.01.2023 реализовать
-        return null;
-    };
+
+    public List<Equipment> getAll(){
+        return repository.findAll();
+    }
 
 
-    public List<EquipmentInfoDTO> getAll(){
-        // TODO: 18.01.2023 реализовать
-        return null;
-    };
 //    UUID createNew(EquipmentCreateDto dto);
 
     public void save(Equipment e){
