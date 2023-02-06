@@ -3,13 +3,13 @@ package com.example.equipmentser.services.impl;
 import com.example.equipmentser.entity.Manufacturer;
 import com.example.equipmentser.repository.ManufacturerRepository;
 import com.example.equipmentser.services.interfaces.ManufacturerService;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class ManufacturerServiceImpl implements ManufacturerService {
     private final ManufacturerRepository repository;
     @Override

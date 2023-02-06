@@ -3,13 +3,13 @@ package com.example.equipmentser.services.impl;
 import com.example.equipmentser.entity.Model;
 import com.example.equipmentser.repository.ModelRepository;
 import com.example.equipmentser.services.interfaces.ModelService;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class ModelServiceImpl implements ModelService {
 
     private final ModelRepository repository;
