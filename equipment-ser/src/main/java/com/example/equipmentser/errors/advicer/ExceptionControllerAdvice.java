@@ -17,7 +17,4 @@ public class ExceptionControllerAdvice {
         ApplicationErrorDto err = new ApplicationErrorDto(HttpStatus.NOT_FOUND.value(), e.getMessage());
         return new ResponseEntity<>(err, HttpStatus.NOT_FOUND);
     }
-
-
-
 }

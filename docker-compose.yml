@@ -1,11 +1,22 @@
 version: '3.8'
 
 services:
+  frontend:
+    build:
+      context: front-ui
+      args:
+        - REACT_APP_API_BASE=http://$SERVER_HOSTNAME
+    command: serve -p 80 -s . -l 3000
+    #    volumes:
+    #      - './:/usr/src/app'
+    #      - '/usr/src/app/node_modules'
+    ports:
+      - "3000:3000"
+
   control-service:
-    image: control-service/latest
-#    build:
-#      context: .
-#      dockerfile: control-service/Dockerfile
+    #    image: control-service/latest
+    build:
+      context: control-service
     ports:
       - "8199:8199"
     environment:
@@ -26,7 +37,9 @@ services:
     volumes:
       - ./postgres-equp/db:/var/lib/postgresql/data
   equipment-service:
-    image: equipment-service/latest
+    #    image: equipment-service/latest
+    build:
+      context: equipment-ser
     environment:
       - JAVA_TOOL_OPTIONS=-Xmx500M -Dspring.profiles.active=test
       - TZ=Europe/Moscow
@@ -37,28 +50,29 @@ services:
     ports:
       - "8190:8190"
   postgres-loc:
-      image: postgres:15.1
-      restart: always
-      environment:
-        LANG: en_US.UTF-8
-        POSTGRES_HOST: postgres
-        POSTGRES_PORT: 5432
-        POSTGRES_USER: postgres
-        POSTGRES_PASSWORD: admin
-        POSTGRES_DB: equpdb
-      volumes:
-        - ./postgres-loc/db:/var/lib/postgresql/data
+    image: postgres:15.1
+    restart: always
+    environment:
+      LANG: en_US.UTF-8
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: equpdb
+    volumes:
+      - ./postgres-loc/db:/var/lib/postgresql/data
   location-service:
-      image: location-service/latest
-      environment:
-        - JAVA_TOOL_OPTIONS=-Xmx500M -Dspring.profiles.active=test
-        - TZ=Europe/Moscow
-        - server.port=8191
-        - spring.datasource.url=jdbc:postgresql://postgres-loc:5432/locationdb?currentSchema=location
-        - spring.datasource.username=postgres
-        - spring.datasource.password=admin
-      ports:
-        - "8191:8191"
+    build:
+      context: location-service
+    environment:
+      - JAVA_TOOL_OPTIONS=-Xmx500M -Dspring.profiles.active=test
+      - TZ=Europe/Moscow
+      - server.port=8191
+      - spring.datasource.url=jdbc:postgresql://postgres-loc:5432/locationdb?currentSchema=location
+      - spring.datasource.username=postgres
+      - spring.datasource.password=admin
+    ports:
+      - "8191:8191"
 
 
 
